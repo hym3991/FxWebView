@@ -1,42 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <RadioGroup
-        android:id="@+id/main_set_group"
+    <data>
+        <import type="com.hym.fxwebview.control.MainActivityVM"/>
+        <variable
+            name="viewModel"
+            type="MainActivityVM"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".control.MainActivity">
 
-        <RadioButton
-            android:id="@+id/set_web_default"
+        <TextView
+            style="@style/main_title_style"
+            android:id="@+id/main_title"
+            android:text="@{viewModel.title}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="加载策略(可多选)"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/main_set_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_title"
+            android:orientation="vertical">
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_create"
+                android:text="使用预创建的webview"
+                />
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_reweb"
+                android:text="使用webview复用池"
+                />
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_default"
+                android:text="webview基本设置"
+                />
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_createUrl"
+                android:text="预载url"
+                />
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_x5"
+                android:text="替换x5webview"
+                />
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_sonic"
+                android:text="使用sonic"
+                />
+
+            <CheckBox
+                style="@style/main_check_box_style"
+                android:id="@+id/set_web_html"
+                android:text="获取直出网页"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/main_loadweb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="加载网页"
+            app:layout_constraintTop_toBottomOf="@id/main_set_group"/>
+
+        <TextView
+            android:id="@+id/main_result_title"
+            style="@style/main_title_style"
+            android:text="加载结果"
+            app:layout_constraintTop_toBottomOf="@id/main_loadweb"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_result_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/main_result_title"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/main_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="webview基本设置"
-            android:textSize="16dp"/>
-
-        <RadioButton
-            android:id="@+id/set_web_reweb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="使用webview复用池"
-            android:textSize="16dp"/>
-
-        <RadioButton
-            android:id="@+id/set_web_create"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="使用预创建webview"
-            android:textSize="16dp"/>
-
-
-    </RadioGroup>
-
-</androidx.constraintlayout.ConstraintLayout>
+            android:src="@mipmap/icon_clear_all"
+            android:background="@null"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
