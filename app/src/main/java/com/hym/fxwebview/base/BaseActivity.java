@@ -1,9 +1,11 @@
 package com.hym.fxwebview.base;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.hym.fxwebview.BR;
+import com.hym.fxwebview.R;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,13 +23,16 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
 	protected void onCreate( @Nullable Bundle savedInstanceState )
 	{
 		super.onCreate( savedInstanceState );
-		setContentView( getLayoutRes() );
-		ViewGroup content = (ViewGroup) findViewById(android.R.id.content);
-		ViewDataBinding viewDataBinding = DataBindingUtil.inflate( getLayoutInflater(), getLayoutRes() , content,false);
+		ViewGroup container = (ViewGroup) LayoutInflater.from(this).inflate( R.layout.activity_basic, null);
+		setContentView( container );
+		LayoutInflater layoutInflater = LayoutInflater.from(this);
+	
+		ViewDataBinding viewDataBinding = DataBindingUtil.inflate(layoutInflater, getLayoutRes() , container,true);
 		if( viewDataBinding != null )
 		{
-			BaseViewModel baseViewModel = initViewModel(setViewModel());
+			T baseViewModel = initViewModel(setViewModel());
 			viewDataBinding.setVariable( BR.viewModel,baseViewModel );
+			baseViewModel.setViewDataBinding( viewDataBinding );
 			baseViewModel.onViewBind();
 		}
 	}
@@ -36,8 +41,8 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
 	
 	public abstract T setViewModel();
 	
-	private BaseViewModel initViewModel(T z)
+	private T initViewModel(T z)
 	{
-		return ViewModelProviders.of( this ).get( z.getClass() );
+		return (T)ViewModelProviders.of( this ).get( z.getClass() );
 	}
 }

@@ -1,5 +1,6 @@
 package com.hym.fxwebview.base;
 
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
 
 /**
@@ -8,6 +9,18 @@ import androidx.lifecycle.ViewModel;
  */
 public class BaseViewModel extends ViewModel
 {
+	private ViewDataBinding viewDataBinding;
+	
+	public ViewDataBinding getViewDataBinding()
+	{
+		return viewDataBinding;
+	}
+	
+	public void setViewDataBinding( ViewDataBinding viewDataBinding )
+	{
+		this.viewDataBinding = viewDataBinding;
+	}
+	
 	public void onViewBind()
 	{
 	
