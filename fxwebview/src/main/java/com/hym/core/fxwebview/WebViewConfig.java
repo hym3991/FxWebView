@@ -9,5 +9,7 @@ import android.content.Context;
 public class WebViewConfig
 {
 	public Context context;
+	private Class proLoadWebViewClass;
+	
 	
 }
