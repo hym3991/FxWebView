@@ -1,23 +1,22 @@
 package com.hym.core.fxwebview.strategy.preload;
 
 import android.content.Context;
-
-import com.tencent.smtt.sdk.WebView;
+import android.webkit.WebView;
 
 /**
  *
  */
-public class FxPreLoadX5WebView extends BasePreLoadWebView<WebView>
+public class FxPreLoadX5WebView extends BasePreLoadWebView
 {
 	
 	@Override
-	public X5WebView createWebView()
+	public WebView createWebView()
 	{
 		return null;
 	}
 	
 	@Override
-	public X5WebView getWebViewToUse( Context context )
+	public WebView getWebViewToUse( Context context )
 	{
 		return null;
 	}

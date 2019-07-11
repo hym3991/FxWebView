@@ -145,7 +145,7 @@ public class BrowserActivity extends Activity {
 	private void init() {
 
 		mWebView = new X5WebView(this, null);
-
+		
 		mViewParent.addView(mWebView, new FrameLayout.LayoutParams(
 				FrameLayout.LayoutParams.FILL_PARENT,
 				FrameLayout.LayoutParams.FILL_PARENT));
