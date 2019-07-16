@@ -1,4 +1,4 @@
-package com.hym.core.fxwebview.strategy.preload;
+package com.hym.fxwebview.preload;
 
 import android.content.Context;
 import android.webkit.WebView;

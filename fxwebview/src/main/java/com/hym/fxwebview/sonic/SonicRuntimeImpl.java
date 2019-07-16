@@ -11,7 +11,7 @@
  *
  */
 
-package com.hym.core.fxwebview.strategy.sonic;
+package com.hym.fxwebview.sonic;
 
 import android.content.Context;
 import android.os.Build;

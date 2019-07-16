@@ -34,5 +34,6 @@ dependencies {
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.1.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.1.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
-    implementation files('src/main/libs/vgtime.jar')
+    implementation project(path: ':fxwebview' )
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-alpha-3'
 }

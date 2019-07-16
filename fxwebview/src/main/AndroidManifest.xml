@@ -1,2 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hym.core.fxwebview"/>
+          package="com.hym.core.fxwebview">
+
+    <application>
+
+        <provider
+            android:authorities="${applicationId}.fxweb-installer"
+            android:name="com.hym.fxwebview.install.FxWebViewInstaller"
+            android:exported="false"/>
+    </application>
+</manifest>

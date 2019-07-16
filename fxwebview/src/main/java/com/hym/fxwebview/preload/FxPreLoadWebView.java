@@ -1,11 +1,11 @@
-package com.hym.core.fxwebview.strategy.preload;
+package com.hym.fxwebview.preload;
 
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.view.View;
 import android.webkit.WebView;
 
-import com.hym.core.fxwebview.strategy.FxWebViewSetting;
+import com.hym.fxwebview.FxWebViewSetting;
 
 /**
  * Created by Neo on 2019/7/9.
@@ -13,7 +13,6 @@ import com.hym.core.fxwebview.strategy.FxWebViewSetting;
  */
 public class FxPreLoadWebView extends BasePreLoadWebView<WebView>
 {
-	private static volatile FxPreLoadWebView preloadWebView = null;
 	private Context context;
 	
 	public static FxPreLoadWebView getInstance()
@@ -26,9 +25,18 @@ public class FxPreLoadWebView extends BasePreLoadWebView<WebView>
 		private static final FxPreLoadWebView INSTANCE = new FxPreLoadWebView();
 	}
 	
+	public FxPreLoadWebView setContext( Context context )
+	{
+		this.context = context;
+		return Holder.INSTANCE;
+	}
+	
+	private FxPreLoadWebView(){}
+	
 	@Override
 	public WebView getWebViewToUse( Context context )
 	{
+		this.context = context;
 		WebView webView = getWebView( context );
 		MutableContextWrapper contextWrapper = (MutableContextWrapper) webView.getContext();
 		contextWrapper.setBaseContext(context);

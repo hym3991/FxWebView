@@ -33,6 +33,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
 			T baseViewModel = initViewModel(setViewModel());
 			viewDataBinding.setVariable( BR.viewModel,baseViewModel );
 			baseViewModel.setViewDataBinding( viewDataBinding );
+			baseViewModel.setActivity( this );
 			baseViewModel.onViewBind();
 		}
 	}
