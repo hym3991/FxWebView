@@ -51,6 +51,11 @@ public class FxWebViewInstaller extends ContentProvider
 		};
 		//x5内核初始化接口
 		QbSdk.initX5Environment(getContext(),  cb);
+		if(!QbSdk.isTbsCoreInited())
+		{
+			// preinit只需要调用一次，如果已经完成了初始化，那么就直接构造view
+			QbSdk.preInit(getContext(), null);// 设置X5初始化完成的回调接口
+		}
 		START = DateUtils.getCurDateSecond();
 		FLog.d( "**X5 install success use:"+ DateUtils.getDistance( START ) +" 毫秒" );
 		if (!SonicEngine.isGetInstanceAllowed())

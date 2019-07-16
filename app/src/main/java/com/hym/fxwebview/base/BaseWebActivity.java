@@ -17,8 +17,10 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 import com.hym.fxwebview.FxWebViewSetting;
 import com.hym.fxwebview.R;
+import com.hym.fxwebview.preload.FxPreLoadWebView;
 import com.hym.fxwebview.sonic.SonicSessionClientImpl;
 import com.hym.fxwebview.widget.X5WebView;
 import com.tencent.sonic.sdk.SonicSession;
@@ -101,8 +103,8 @@ public abstract class BaseWebActivity<T extends BaseViewModel> extends BaseActiv
 		
 		if( getX5WebView() == null )
 		{
-			//webView = FxPreLoadWebView.getInstance().getWebViewToUse( getApplicationContext() );
-			webView = new WebView( getApplicationContext() );
+			webView = FxPreLoadWebView.getInstance().getWebViewToUse( getApplicationContext() );
+			//webView = new WebView( getApplicationContext() );
 			FxWebViewSetting.webViewDefauleSetting( webView,new BasicWebViewClient() );
 			webView.setWebChromeClient( new WebChromeClient() );
 			webView.setLayoutParams( getWebViewLayoutParams() );
