@@ -10,7 +10,7 @@ import java.util.Stack;
 /**
  *
  */
-public abstract class BasePreLoadWebView<T extends WebView>
+public abstract class FxBasePreLoadWebView<T extends WebView>
 {
 	private final Stack<T> cachedWebViewStack = new Stack<>();
 	private static final int CACHED_WEBVIEW_MAX_NUM = 2;

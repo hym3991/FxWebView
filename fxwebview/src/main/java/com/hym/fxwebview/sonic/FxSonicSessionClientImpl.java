@@ -24,7 +24,7 @@ import java.util.HashMap;
  *  a implement of SonicSessionClient which need to connect webview and content data.
  */
 
-public class SonicSessionClientImpl extends SonicSessionClient
+public class FxSonicSessionClientImpl extends SonicSessionClient
 {
 
     private WebView webView;

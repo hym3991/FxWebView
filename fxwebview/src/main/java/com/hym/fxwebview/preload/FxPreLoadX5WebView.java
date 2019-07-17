@@ -6,7 +6,7 @@ import android.webkit.WebView;
 /**
  *
  */
-public class FxPreLoadX5WebView extends BasePreLoadWebView
+public class FxPreLoadX5WebView extends FxBasePreLoadWebView
 {
 	
 	@Override

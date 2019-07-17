@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.hym.fxwebview.R;
 import com.hym.fxwebview.base.BaseWebActivity;
 import com.hym.fxwebview.config.Const;
-import com.hym.fxwebview.sonic.SonicSessionClientImpl;
+import com.hym.fxwebview.sonic.FxSonicSessionClientImpl;
 import com.hym.fxwebview.utils.DateUtils;
 import com.hym.fxwebview.widget.X5WebView;
 import com.tencent.sonic.sdk.SonicSession;
@@ -115,7 +115,7 @@ public class X5WebActivity extends BaseWebActivity<X5WebActivityVM>
 	}
 	
 	@Override
-	public SonicSessionClientImpl getSonicSessionClientImpl()
+	public FxSonicSessionClientImpl getSonicSessionClientImpl()
 	{
 		return null;
 	}

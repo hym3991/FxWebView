@@ -11,7 +11,7 @@ import com.hym.fxwebview.FxWebViewSetting;
  * Created by Neo on 2019/7/9.
  * Description : 预载webview
  */
-public class FxPreLoadWebView extends BasePreLoadWebView<WebView>
+public class FxPreLoadWebView extends FxBasePreLoadWebView<WebView>
 {
 	private Context context;
 	

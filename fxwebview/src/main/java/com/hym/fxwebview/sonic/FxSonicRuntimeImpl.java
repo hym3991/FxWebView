@@ -22,14 +22,11 @@ import android.webkit.CookieManager;
 import android.webkit.WebResourceResponse;
 
 import com.hym.core.fxwebview.BuildConfig;
-import com.hym.fxwebview.utils.FLog;
 import com.tencent.sonic.sdk.SonicRuntime;
 import com.tencent.sonic.sdk.SonicSessionClient;
 
 import java.io.File;
 import java.io.InputStream;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
@@ -37,73 +34,15 @@ import java.util.Map;
  * the sonic host application must implement SonicRuntime to do right things.
  */
 
-public class SonicRuntimeImpl<T> extends SonicRuntime implements FxSonicImpl<T>
+public abstract class FxSonicRuntimeImpl extends SonicRuntime
 {
-    public SonicRuntimeImpl( Context context ) {
+    public abstract String getFxUserAgent();
+    public abstract String getFxCurrentUserAccount();
+    public abstract void fxShowToast(CharSequence text, int duration);
+    public abstract void fxNotifyError( SonicSessionClient client, String url, int errorCode);
+    public abstract boolean isFxSonicUrl( String url);
+    public FxSonicRuntimeImpl( Context context ) {
         super(context);
-    }
-    
-    @Override
-    public T create()
-    {
-        try
-        {
-            FLog.d( "create---->" );
-            return getEntry().newInstance();
-        }
-        catch( IllegalAccessException e )
-        {
-            e.printStackTrace();
-        }
-        catch( InstantiationException e )
-        {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-    private Class<T> getEntry() {
-        Type type = getClass().getGenericSuperclass();
-        Class<T> result = null;
-        if (type instanceof ParameterizedType ) {
-            ParameterizedType pType = (ParameterizedType) type;
-            result = (Class<T>) pType.getActualTypeArguments()[0];
-        }
-        FLog.d( "create---->"+result.getName() );
-        return result;
-    }
-    
-    @Override
-    public String getFxUserAgent()
-    {
-        return null;
-    }
-    
-    @Override
-    public String getFxCurrentUserAccount()
-    {
-        return null;
-    }
-    
-    @Override
-    public void fxShowToast( CharSequence text ,
-            int duration )
-    {
-    
-    }
-    
-    @Override
-    public void fxNotifyError( SonicSessionClient client ,
-            String url ,
-            int errorCode )
-    {
-    
-    }
-    
-    @Override
-    public boolean isFxSonicUrl( String url )
-    {
-        return false;
     }
     
     /**

@@ -21,7 +21,7 @@ import android.webkit.WebViewClient;
 import com.hym.fxwebview.FxWebViewSetting;
 import com.hym.fxwebview.R;
 import com.hym.fxwebview.preload.FxPreLoadWebView;
-import com.hym.fxwebview.sonic.SonicSessionClientImpl;
+import com.hym.fxwebview.sonic.FxSonicSessionClientImpl;
 import com.hym.fxwebview.widget.X5WebView;
 import com.tencent.sonic.sdk.SonicSession;
 
@@ -436,7 +436,7 @@ public abstract class BaseWebActivity<T extends BaseViewModel> extends BaseActiv
 	}
 	
 	public abstract SonicSession getSonicSession();
-	public abstract SonicSessionClientImpl getSonicSessionClientImpl();
+	public abstract FxSonicSessionClientImpl getSonicSessionClientImpl();
 	public abstract X5WebView getX5WebView();
 	public abstract int getRddWebViewId();
 	public abstract void initCustomData();

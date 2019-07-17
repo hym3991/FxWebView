@@ -2,13 +2,13 @@ package com.hym.fxwebview.base;
 
 import android.content.Context;
 
-import com.hym.fxwebview.sonic.SonicRuntimeImpl;
+import com.hym.fxwebview.sonic.FxSonicRuntimeImpl;
 import com.tencent.sonic.sdk.SonicSessionClient;
 
 /**
  *
  */
-public class Sssd extends SonicRuntimeImpl<Sssd>
+public class Sssd extends FxSonicRuntimeImpl<Sssd>
 {
 	public Sssd( Context context) {
 		super(context);

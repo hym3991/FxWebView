@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.hym.fxwebview.R;
 import com.hym.fxwebview.base.BaseWebActivity;
 import com.hym.fxwebview.config.Const;
-import com.hym.fxwebview.sonic.SonicSessionClientImpl;
+import com.hym.fxwebview.sonic.FxSonicSessionClientImpl;
 import com.hym.fxwebview.utils.DateUtils;
 import com.hym.fxwebview.widget.X5WebView;
 import com.tencent.sonic.sdk.SonicEngine;
@@ -23,7 +23,7 @@ import com.tencent.sonic.sdk.SonicSessionConfig;
 public class SonicWebActivity extends BaseWebActivity<SonicWebActivityVM>
 {
 	private SonicSession sonicSession;
-	private SonicSessionClientImpl sonicSessionClient = null;
+	private FxSonicSessionClientImpl sonicSessionClient = null;
 	
 	@Override
 	public int getLayoutRes()
@@ -56,7 +56,7 @@ public class SonicWebActivity extends BaseWebActivity<SonicWebActivityVM>
 		sessionConfigBuilder.setSupportLocalServer(true);
 		sonicSession = SonicEngine.getInstance().createSession(Const.OPEN_URL, sessionConfigBuilder.build());
 		if (null != sonicSession) {
-			sonicSession.bindClient(sonicSessionClient = new SonicSessionClientImpl());
+			sonicSession.bindClient(sonicSessionClient = new FxSonicSessionClientImpl());
 		} else {
 			Toast.makeText(this, "create sonic session fail!", Toast.LENGTH_LONG).show();
 		}
@@ -129,7 +129,7 @@ public class SonicWebActivity extends BaseWebActivity<SonicWebActivityVM>
 	}
 	
 	@Override
-	public SonicSessionClientImpl getSonicSessionClientImpl()
+	public FxSonicSessionClientImpl getSonicSessionClientImpl()
 	{
 		return sonicSessionClient;
 	}
