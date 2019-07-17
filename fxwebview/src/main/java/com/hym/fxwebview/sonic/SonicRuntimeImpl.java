@@ -22,11 +22,14 @@ import android.webkit.CookieManager;
 import android.webkit.WebResourceResponse;
 
 import com.hym.core.fxwebview.BuildConfig;
+import com.hym.fxwebview.utils.FLog;
 import com.tencent.sonic.sdk.SonicRuntime;
 import com.tencent.sonic.sdk.SonicSessionClient;
 
 import java.io.File;
 import java.io.InputStream;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
@@ -34,20 +37,83 @@ import java.util.Map;
  * the sonic host application must implement SonicRuntime to do right things.
  */
 
-public class SonicRuntimeImpl extends SonicRuntime
+public class SonicRuntimeImpl<T> extends SonicRuntime implements FxSonicImpl<T>
 {
-
-    public SonicRuntimeImpl( Context context) {
+    public SonicRuntimeImpl( Context context ) {
         super(context);
     }
-
+    
+    @Override
+    public T create()
+    {
+        try
+        {
+            FLog.d( "create---->" );
+            return getEntry().newInstance();
+        }
+        catch( IllegalAccessException e )
+        {
+            e.printStackTrace();
+        }
+        catch( InstantiationException e )
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    private Class<T> getEntry() {
+        Type type = getClass().getGenericSuperclass();
+        Class<T> result = null;
+        if (type instanceof ParameterizedType ) {
+            ParameterizedType pType = (ParameterizedType) type;
+            result = (Class<T>) pType.getActualTypeArguments()[0];
+        }
+        FLog.d( "create---->"+result.getName() );
+        return result;
+    }
+    
+    @Override
+    public String getFxUserAgent()
+    {
+        return null;
+    }
+    
+    @Override
+    public String getFxCurrentUserAccount()
+    {
+        return null;
+    }
+    
+    @Override
+    public void fxShowToast( CharSequence text ,
+            int duration )
+    {
+    
+    }
+    
+    @Override
+    public void fxNotifyError( SonicSessionClient client ,
+            String url ,
+            int errorCode )
+    {
+    
+    }
+    
+    @Override
+    public boolean isFxSonicUrl( String url )
+    {
+        return false;
+    }
+    
     /**
      * 获取用户UA信息
      * @return
      */
     @Override
     public String getUserAgent() {
-        return "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Mobile Safari/537.36";
+        //return "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Mobile Safari/537.36";
+        return getFxUserAgent();
     }
 
     /**
@@ -56,7 +122,8 @@ public class SonicRuntimeImpl extends SonicRuntime
      */
     @Override
     public String getCurrentUserAccount() {
-        return "sonic-demo-master";
+        //return "sonic-demo-master";
+        return getFxCurrentUserAccount();
     }
 
     @Override
@@ -90,17 +157,18 @@ public class SonicRuntimeImpl extends SonicRuntime
 
     @Override
     public void showToast( CharSequence text, int duration) {
-
+        fxShowToast( text, duration );
     }
 
     @Override
     public void notifyError( SonicSessionClient client, String url, int errorCode) {
-
+        fxNotifyError( client, url, errorCode );
     }
 
     @Override
     public boolean isSonicUrl( String url) {
-        return true;
+        //return true;
+        return isFxSonicUrl( url );
     }
 
     @Override

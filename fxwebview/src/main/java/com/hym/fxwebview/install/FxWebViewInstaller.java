@@ -13,6 +13,7 @@ import com.hym.fxwebview.utils.FLog;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.sonic.sdk.SonicConfig;
 import com.tencent.sonic.sdk.SonicEngine;
+import com.tencent.sonic.sdk.SonicRuntime;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,15 +58,21 @@ public class FxWebViewInstaller extends ContentProvider
 			QbSdk.preInit(getContext(), null);// 设置X5初始化完成的回调接口
 		}
 		START = DateUtils.getCurDateSecond();
+		
 		FLog.d( "**X5 install success use:"+ DateUtils.getDistance( START ) +" 毫秒" );
 		if (!SonicEngine.isGetInstanceAllowed())
 		{
-			SonicEngine.createInstance(new SonicRuntimeImpl(getContext()), new SonicConfig.Builder().build());
+			SonicEngine.createInstance(getRunTime(), new SonicConfig.Builder().build());
 		}
 		START = DateUtils.getCurDateSecond();
 		FLog.d( "**sonic install success use:"+ DateUtils.getDistance( START ) +" 毫秒" );
 		FLog.d( "\\*FxWebView Installer end success use:"+ DateUtils.getDistance( TOTAL ) +" 毫秒");
 		return true;
+	}
+	
+	private SonicRuntime getRunTime()
+	{
+		return (SonicRuntime)new SonicRuntimeImpl<SonicRuntime>(getContext()).create();
 	}
 	
 	@Nullable
