@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import com.hym.fxwebview.FxWebView;
 import com.hym.fxwebview.R;
 import com.hym.fxwebview.base.BaseViewModel;
+import com.hym.fxwebview.base.Sssd;
 import com.hym.fxwebview.config.Const;
 import com.hym.fxwebview.control.web.DefaultWebActivity;
 import com.hym.fxwebview.control.web.SonicWebActivity;
@@ -46,6 +48,8 @@ public class HomeActivityVM extends BaseViewModel<HomeActivity,ActivityHomeBindi
 	
 	private void doSonic()
 	{
+		FxWebView.getInstance().setSonicRunTime( new Sssd( getActivity().getApplicationContext() ) );
+		
 		SonicSessionConfig.Builder sessionConfigBuilder = new SonicSessionConfig.Builder();
 		sessionConfigBuilder.setSupportLocalServer(true);
 		

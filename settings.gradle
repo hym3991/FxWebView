@@ -1,1 +1,1 @@
-include ':app',  ':fxwebview', ':X5WebDemo'
+include ':app',  ':fxwebview'

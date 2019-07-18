@@ -8,7 +8,7 @@ import com.tencent.sonic.sdk.SonicSessionClient;
 /**
  *
  */
-public class Sssd extends FxSonicRuntimeImpl<Sssd>
+public class Sssd extends FxSonicRuntimeImpl
 {
 	public Sssd( Context context) {
 		super(context);
@@ -44,12 +44,7 @@ public class Sssd extends FxSonicRuntimeImpl<Sssd>
 	@Override
 	public boolean isFxSonicUrl( String url )
 	{
-		return false;
+		return true;
 	}
 	
-	@Override
-	public Sssd create()
-	{
-		return this;
-	}
 }
