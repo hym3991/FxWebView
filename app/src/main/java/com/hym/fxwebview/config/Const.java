@@ -6,5 +6,5 @@ package com.hym.fxwebview.config;
  */
 public class Const
 {
-	public static final String OPEN_URL = "https://m.ttpai.cn/c2b/tianyancha/page/vehicleInfo";
+	public static final String OPEN_URL = "https://m.jd.cn";
 }

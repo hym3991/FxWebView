@@ -239,6 +239,7 @@ public abstract class BaseWebActivity<T extends BaseViewModel> extends BaseActiv
 				WebView view ,
 				String url )
 		{
+			//tel a -  c - b
 			boolean isWebViewAccept = isAcceptedScheme( url );
 			Log.d( TAG , "shouldOverrideUrlLoading : " + url + "  isWebViewAccept " + isWebViewAccept );
 			if( isWebViewAccept )
