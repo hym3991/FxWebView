@@ -28,15 +28,25 @@
         </activity>
 
         <activity android:name=".control.HomeActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+                <!--<action android:name="android.intent.action.VIEW"/>-->
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".control.web.DefaultWebActivity"/>
+        <activity android:name=".control.web.X5WebActivity"/>
+        <activity android:name=".control.web.SonicWebActivity"/>
+
+        <activity android:name=".control.DesignActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".control.web.DefaultWebActivity"/>
-        <activity android:name=".control.web.X5WebActivity"/>
-        <activity android:name=".control.web.SonicWebActivity"/>
     </application>
 
 </manifest>
