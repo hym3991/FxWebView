@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FxWebView.iml" filepath="$PROJECT_DIR$/.idea/FxWebView.iml" />
       <module fileurl="file://$PROJECT_DIR$/FxWebView.iml" filepath="$PROJECT_DIR$/FxWebView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/FxWebView-app.iml" filepath="$PROJECT_DIR$/app/FxWebView-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxwebview/FxWebView-fxwebview.iml" filepath="$PROJECT_DIR$/fxwebview/FxWebView-fxwebview.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/fxwebview/fxwebview.iml" filepath="$PROJECT_DIR$/fxwebview/fxwebview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hongyaming-FxWebView.iml" filepath="$PROJECT_DIR$/hongyaming-FxWebView.iml" />
     </modules>
   </component>
 </project>
