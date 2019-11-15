@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import com.hym.fxwebview.preload.FxPreLoadWebView;
-import com.hym.fxwebview.utils.DateUtils;
+import com.hym.fxwebview.utils.FxDateUtils;
 import com.hym.fxwebview.utils.FLog;
 import com.tencent.smtt.sdk.QbSdk;
 
@@ -25,12 +25,12 @@ public class FxWebViewInstaller extends ContentProvider
 	public boolean onCreate()
 	{
 		Context context = getContext();
-		String START = DateUtils.getCurDateSecond();
+		String START = FxDateUtils.getCurDateSecond();
 		String TOTAL = START;
 		FLog.d( "/*FxWebViewInstaller begin success START:"+START );
 		FxPreLoadWebView.getInstance().setContext( context ).webViewProLoad();
-		START = DateUtils.getCurDateSecond();
-		FLog.d( "**FxPreLoadWebView install success use:"+ DateUtils.getDistance( START ) +" 毫秒" );
+		START = FxDateUtils.getCurDateSecond();
+		FLog.d( "**FxPreLoadWebView install success use:"+ FxDateUtils.getDistance( START ) +" 毫秒" );
 		
 		QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback()
 		{
@@ -53,9 +53,9 @@ public class FxWebViewInstaller extends ContentProvider
 			// preinit只需要调用一次，如果已经完成了初始化，那么就直接构造view
 			QbSdk.preInit(getContext(), null);// 设置X5初始化完成的回调接口
 		}
-		START = DateUtils.getCurDateSecond();
-		FLog.d( "**X5 install success use:"+ DateUtils.getDistance( START ) +" 毫秒" );
-		FLog.d( "\\*FxWebView Installer end success use:"+ DateUtils.getDistance( TOTAL ) +" 毫秒");
+		START = FxDateUtils.getCurDateSecond();
+		FLog.d( "**X5 install success use:"+ FxDateUtils.getDistance( START ) +" 毫秒" );
+		FLog.d( "\\*FxWebView Installer end success use:"+ FxDateUtils.getDistance( TOTAL ) +" 毫秒");
 		return true;
 	}
 	

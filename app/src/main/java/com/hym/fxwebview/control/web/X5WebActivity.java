@@ -10,7 +10,7 @@ import com.hym.fxwebview.R;
 import com.hym.fxwebview.base.BaseWebActivity;
 import com.hym.fxwebview.config.Const;
 import com.hym.fxwebview.sonic.FxSonicSessionClientImpl;
-import com.hym.fxwebview.utils.DateUtils;
+import com.hym.fxwebview.utils.FxDateUtils;
 import com.hym.fxwebview.widget.X5WebView;
 import com.tencent.sonic.sdk.SonicSession;
 
@@ -65,7 +65,7 @@ public class X5WebActivity extends BaseWebActivity<X5WebActivityVM>
 	@Override
 	public void doOnPageStarted( String url )
 	{
-		startTime = DateUtils.getCurDateSecond();
+		startTime = FxDateUtils.getCurDateSecond();
 		Log.d(TAG,"x5doOnPageStarted:"+ startTime );
 	}
 	
@@ -80,10 +80,10 @@ public class X5WebActivity extends BaseWebActivity<X5WebActivityVM>
 			String url ,
 			WebView view )
 	{
-		Log.d(TAG,"x5doOnPageFinished:"+ DateUtils.getCurDateSecond() );
+		Log.d(TAG,"x5doOnPageFinished:"+ FxDateUtils.getCurDateSecond() );
 		if( !TextUtils.isEmpty( startTime ) )
 		{
-			String result = "x5加载总耗时:"+ DateUtils.getDistanceSecond(startTime);
+			String result = "x5加载总耗时:"+ FxDateUtils.getDistanceSecond(startTime);
 			Log.d(TAG, result);
 			Toast.makeText( this,result,Toast.LENGTH_LONG ).show();
 		}

@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by Neo on 2019/7/13.
  * Description :
  */
-public class DateUtils
+public class FxDateUtils
 {
 	private static final String pattern = "yyyy-MM-dd HH:mm:ss";
 	

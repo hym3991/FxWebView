@@ -17,19 +17,19 @@ public class BaseApplication extends Application
 	{
 		super.onCreate();
 		context = getApplicationContext();
-		//String START = DateUtils.getCurDateSecond();
+		//String START = FxDateUtils.getCurDateSecond();
 		//Log.d("FxWebView","首次创建开始时间:"+ START );
 		//FxPreLoadWebView.getInstance().setContext( getApplicationContext() ).createWebView();
-		//START = DateUtils.getCurDateSecond();
+		//START = FxDateUtils.getCurDateSecond();
 		//Log.d("FxWebView","首次创建创建开始结束:"+ START);
-		//Log.d("FxWebView","首次创建总耗时:"+ DateUtils.getDistance( START ) +" 毫秒");
+		//Log.d("FxWebView","首次创建总耗时:"+ FxDateUtils.getDistance( START ) +" 毫秒");
 		
 		
 		//Log.d("FxWebView","再次创建开始时间:"+ START );
 		//FxPreLoadWebView.getInstance().setContext( getApplicationContext() ).createWebView();
-		//START = DateUtils.getCurDateSecond();
+		//START = FxDateUtils.getCurDateSecond();
 		//Log.d("FxWebView","再次创建创建开始结束:"+ START);
-		//Log.d("FxWebView","再次创建总耗时:"+ DateUtils.getDistance( START ) +" 毫秒");
+		//Log.d("FxWebView","再次创建总耗时:"+ FxDateUtils.getDistance( START ) +" 毫秒");
 		
 	}
 	

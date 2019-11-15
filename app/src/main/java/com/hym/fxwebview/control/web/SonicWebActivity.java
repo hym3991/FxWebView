@@ -10,7 +10,7 @@ import com.hym.fxwebview.R;
 import com.hym.fxwebview.base.BaseWebActivity;
 import com.hym.fxwebview.config.Const;
 import com.hym.fxwebview.sonic.FxSonicSessionClientImpl;
-import com.hym.fxwebview.utils.DateUtils;
+import com.hym.fxwebview.utils.FxDateUtils;
 import com.hym.fxwebview.widget.X5WebView;
 import com.tencent.sonic.sdk.SonicEngine;
 import com.tencent.sonic.sdk.SonicSession;
@@ -78,7 +78,7 @@ public class SonicWebActivity extends BaseWebActivity<SonicWebActivityVM>
 	@Override
 	public void doOnPageStarted( String url )
 	{
-		startTime = DateUtils.getCurDateSecond();
+		startTime = FxDateUtils.getCurDateSecond();
 		Log.d(TAG,"sonic doOnPageStarted:"+ startTime );
 	}
 	
@@ -93,10 +93,10 @@ public class SonicWebActivity extends BaseWebActivity<SonicWebActivityVM>
 			String url ,
 			WebView view )
 	{
-		Log.d(TAG,"sonic doOnPageFinished:"+ DateUtils.getCurDateSecond() );
+		Log.d(TAG,"sonic doOnPageFinished:"+ FxDateUtils.getCurDateSecond() );
 		if( !TextUtils.isEmpty( startTime ) )
 		{
-			String result = "sonic加载总耗时:"+ DateUtils.getDistanceSecond(startTime);
+			String result = "sonic加载总耗时:"+ FxDateUtils.getDistanceSecond(startTime);
 			Log.d(TAG, result);
 			Toast.makeText( this,result,Toast.LENGTH_LONG ).show();
 		}
